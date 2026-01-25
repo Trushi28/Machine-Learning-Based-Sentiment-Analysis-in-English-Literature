@@ -261,6 +261,17 @@ def predict(text):
     return process_predictions(sent_logits, emo_logits)
 ```
 
+**Sample Predictions Output:**
+
+The model demonstrates exceptional performance on diverse text samples, accurately identifying sentiments and associated emotions:
+
+![Sample Predictions](assets/OUTPUT.jpeg)
+
+The visualization above shows the model's predictions on three different movie reviews:
+- **Positive Review**: "This movie was absolutely breathtaking..." → Correctly identified as Positive (88.5%) with emotions Joy(0.99), Anger(0.01), Sadness(0.01)
+- **Negative Review**: "Complete waste of time..." → Correctly identified as Negative (96.7%) with emotions Sadness(0.53), Joy(0.03)
+- **Neutral Review**: "It was okay..." → Correctly identified as Negative (32.4%) with emotions Sadness(0.88), Anger(0.46), Joy(0.20)
+
 ---
 
 ## Results and Outputs
