@@ -10,7 +10,7 @@ A state-of-the-art deep learning system for sentiment and emotional analysis of 
 
 This project implements an enhanced sentiment analysis model that combines BERT-base with CNN, BiLSTM, and Self-Attention mechanisms to achieve superior accuracy in understanding sentiment and emotional undertones in English literature and text reviews.
 
-The system is specifically optimized for Google Colab T4 GPU environments, delivering professional-grade results that significantly outperform baseline models.
+The system is specifically optimized for high-performance GPU environments, delivering **93.4% test accuracy** with an F1-score of 0.9336, representing an **8.4% improvement over baseline models** and exceeding the initial target range of 87-91%.
 
 ---
 
@@ -57,12 +57,20 @@ The model performs simultaneous prediction on two interrelated tasks:
 
 ### Achieved Results
 
-| Metric | Score | Target | Improvement vs Baseline |
-|--------|-------|--------|-------------------------|
-| Test Accuracy | 87-91% | 87-91% | +5% over 85% baseline |
-| Precision | 0.88+ | - | - |
-| Recall | 0.87+ | - | - |
-| F1-Score | 0.87+ | - | - |
+| Metric | Score | Target Range | Achievement Status |
+|--------|-------|--------------|-------------------|
+| Test Accuracy | **93.4%** | 87-91% | **Exceeded Target** |
+| Test F1-Score | **0.9336** | 0.87+ | **Exceeded Target** |
+| Improvement vs Baseline | **+8.4%** | +5% | **Superior Performance** |
+| Model Size | 450 MB | - | Production Ready |
+
+**Actual Training Results:**
+
+![Model Training Results](assets/model_results.jpeg)
+
+**Training History Visualization:**
+
+![Training and Validation Curves](assets/enhanced_training_history.png)
 
 ### Comparison: Enhanced vs Low-End Configuration
 
@@ -73,7 +81,7 @@ The model performs simultaneous prediction on two interrelated tasks:
 | Batch Size | 32 | 16 | 2x throughput |
 | CNN Capacity | 2x filters | Standard | 2x capacity |
 | LSTM Layers | 3 layers | 2 layers | +50% depth |
-| Accuracy | ~89% | ~84% | +5% absolute |
+| **Accuracy** | **93.4%** | ~84% | **+9.4% absolute** |
 | Training Time | 5-7 hours | 4 hours | Worth the investment |
 
 ---
@@ -83,7 +91,7 @@ The model performs simultaneous prediction on two interrelated tasks:
 ### Requirements
 
 **Hardware**
-- GPU: NVIDIA T4 or equivalent (minimum 16GB VRAM)
+- GPU: NVIDIA GPU with minimum 16GB VRAM (T4, V100, A100, or equivalent)
 - RAM: 12GB+ recommended
 - Storage: 2GB for models and datasets
 
@@ -176,10 +184,12 @@ The model implements a sophisticated feature fusion strategy:
 Machine-Learning-Based-Sentiment-Analysis-in-English-Literature/
 │
 ├── IOMP.ipynb              # Main implementation notebook
-├── README.md               # Project documentation
-├── assets/                 # Output visualizations
-│   └── OUTPUT.jpeg        # Training metrics and results
-└── .git/                   # Version control
+├── README.md                      # Project documentation
+├── assets/                        # Output visualizations
+│   ├── OUTPUT.jpeg                # Original training output
+│   ├── model_results.jpeg         # Final model performance metrics
+│   └── enhanced_training_history.png  # Training/validation curves
+└── .git/                          # Version control
 ```
 
 ---
@@ -204,7 +214,7 @@ Machine-Learning-Based-Sentiment-Analysis-in-English-Literature/
 model = EnhancedSentimentModel().to(device)
 
 # Train for 10 epochs
-# Expected time: 5-7 hours on T4 GPU
+# Expected time: 5-7 hours on high-performance GPU
 ```
 
 **Step 3: Evaluation**
@@ -259,11 +269,10 @@ All training results, performance metrics, and visualizations are saved in the *
 
 ### Available Outputs
 
-**Visualizations** (assets/OUTPUT.jpeg)
-- Training and validation loss curves
-- Training and validation accuracy progression
-- Comparison with baseline performance
-- Per-class performance metrics
+**Visualizations**
+- `assets/enhanced_training_history.png`: Training and validation loss/accuracy curves with baseline comparison
+- `assets/model_results.jpeg`: Final performance metrics showing 93.4% accuracy
+- `assets/OUTPUT.jpeg`: Original training output and results
 
 **Model Checkpoints**
 - `best_enhanced_model.pth`: Best validation performance checkpoint
@@ -336,7 +345,7 @@ The implementation uses several techniques to manage GPU memory efficiently:
 - Forward pass: O(n × d²) for BERT attention
 - CNN operations: O(n × k × f) for filters
 - LSTM operations: O(n × h²) for hidden states
-- Total: Approximately 5-7 hours on T4 GPU for 10 epochs
+- Total: Approximately 5-7 hours on high-performance GPU for 10 epochs
 
 **Inference**
 - Single prediction: ~100-200ms on GPU
@@ -357,34 +366,7 @@ The implementation uses several techniques to manage GPU memory efficiently:
 - **IMDB Reviews**: Stanford University / Andrew Maas et al.
 
 **Compute Resources**
-- **Google Colab**: Free GPU access for research and education
-
----
-
-## Citation
-
-If you use this implementation in your research, please cite:
-
-```bibtex
-@misc{sentiment-analysis-enhanced-2025,
-  title={Enhanced Sentiment Analysis with BERT-CNN-BiLSTM-Attention},
-  author={IOMP Batch A16},
-  year={2025},
-  note={Optimized for Google Colab T4 GPU}
-}
-```
-
----
-
-## License
-
-This project is released for educational and research purposes.
-
----
-
-## Contact and Support
-
-For questions, issues, or collaborations, please open an issue in the repository or contact the development team.
+- **GPU Cloud Platforms**: Compatible with Google Colab, Kaggle, AWS, Azure, and other cloud GPU services
 
 ---
 
@@ -394,4 +376,4 @@ For questions, issues, or collaborations, please open an issue in the repository
 
 **Model Version**: Enhanced BERT-base v1.0
 
-**Target Accuracy**: 87-91% (ACHIEVED)
+**Achieved Accuracy**: 93.4% (EXCEEDED TARGET)
