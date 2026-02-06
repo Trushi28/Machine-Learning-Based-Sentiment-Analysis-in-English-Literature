@@ -1,6 +1,6 @@
 # Machine Learning-Based Sentiment Analysis in English Literature
 
-**Status**: COMPLETED
+**Status**: ✅ COMPLETED
 
 A state-of-the-art deep learning system for sentiment and emotional analysis of English text, leveraging advanced hybrid architectures optimized for high-performance GPU environments.
 
@@ -8,9 +8,34 @@ A state-of-the-art deep learning system for sentiment and emotional analysis of 
 
 ## Overview
 
-This project implements an enhanced sentiment analysis model that combines BERT-base with CNN, BiLSTM, and Self-Attention mechanisms to achieve superior accuracy in understanding sentiment and emotional undertones in English literature and text reviews.
+This project implements an enhanced sentiment analysis model that combines BERT-base with CNN, BiLSTM, and Self-Attention mechanisms to achieve superior accuracy in understanding sentiment and emotional undertones in English literature and text.
 
-The system is specifically optimized for high-performance GPU environments, delivering **93.4% test accuracy** with an F1-score of 0.9336, representing an **8.4% improvement over baseline models** and exceeding the initial target range of 87-91%.
+The system is specifically optimized for high-performance GPU environments, delivering **97.5% test accuracy** with an F1-score of 0.9753, representing a significant improvement over baseline models.
+
+---
+
+## 🎯 Performance Results
+
+### Achieved Metrics
+
+| Metric | Score | Status |
+|--------|-------|--------|
+| **Test Accuracy** | **97.5%** | ✅ Exceptional |
+| **Test F1-Score** | **0.9753** | ✅ Exceptional |
+| **Total Samples** | **13,028** | Combined Dataset |
+| Model Size | ~550 MB | Production Ready |
+
+**Final Model Output:**
+
+![Model Results](assets/model_results.png)
+
+**Sample Predictions (Literary Text):**
+
+![Sample Predictions](assets/sample_predictions.png)
+
+**Interactive Demo:**
+
+![Interactive Demo](assets/interactive_demo.png)
 
 ---
 
@@ -18,13 +43,12 @@ The system is specifically optimized for high-performance GPU environments, deli
 
 ### Model Components
 
-The hybrid architecture consists of four primary components working in synergy:
+The hybrid architecture consists of four primary components:
 
 **1. BERT-base Foundation**
 - Full BERT-base model with 110M parameters
 - Pre-trained on large-scale text corpora
-- Fine-tuned on sentiment analysis tasks
-- Strategic layer freezing for efficient training
+- Fine-tuned with strategic layer freezing (first 2 layers frozen)
 
 **2. Multi-Scale CNN**
 - Parallel convolutional layers with kernel sizes: 3, 4, 5
@@ -41,89 +65,14 @@ The hybrid architecture consists of four primary components working in synergy:
 **4. Self-Attention Mechanism**
 - Learns importance weights for sequential elements
 - Focuses on critical sentiment-bearing tokens
-- Enhances model interpretability
 - Produces contextualized feature representations
 
 ### Dual Task Learning
 
-The model performs simultaneous prediction on two interrelated tasks:
+The model performs simultaneous prediction:
 
 - **Sentiment Classification**: 3 classes (Negative, Neutral, Positive)
 - **Emotion Detection**: 6 categories (Joy, Sadness, Anger, Fear, Surprise, Neutral)
-
----
-
-## Performance Metrics
-
-### Achieved Results
-
-| Metric | Score | Target Range | Achievement Status |
-|--------|-------|--------------|-------------------|
-| Test Accuracy | **93.4%** | 87-91% | **Exceeded Target** |
-| Test F1-Score | **0.9336** | 0.87+ | **Exceeded Target** |
-| Improvement vs Baseline | **+8.4%** | +5% | **Superior Performance** |
-| Model Size | 450 MB | - | Production Ready |
-
-**Actual Training Results:**
-
-![Model Training Results](assets/model_results.jpeg)
-
-**Training History Visualization:**
-
-![Training and Validation Curves](assets/enhanced_training_history.png)
-
-### Comparison: Enhanced vs Low-End Configuration
-
-| Aspect | Enhanced Model | Low-End Model | Improvement |
-|--------|---------------|---------------|-------------|
-| Base Model | BERT-base (110M) | DistilBERT (66M) | +67% parameters |
-| Sequence Length | 512 tokens | 256 tokens | +100% context |
-| Batch Size | 32 | 16 | 2x throughput |
-| CNN Capacity | 2x filters | Standard | 2x capacity |
-| LSTM Layers | 3 layers | 2 layers | +50% depth |
-| **Accuracy** | **93.4%** | ~84% | **+9.4% absolute** |
-| Training Time | 5-7 hours | 4 hours | Worth the investment |
-
----
-
-## Technical Specifications
-
-### Requirements
-
-**Hardware**
-- GPU: NVIDIA GPU with minimum 16GB VRAM (T4, V100, A100, or equivalent)
-- RAM: 12GB+ recommended
-- Storage: 2GB for models and datasets
-
-**Software**
-- Python 3.8+
-- PyTorch 1.10+
-- Transformers 4.0+
-- CUDA 11.0+
-
-**Key Dependencies**
-```
-torch>=1.10.0
-transformers>=4.0.0
-datasets>=2.0.0
-scikit-learn>=1.0.0
-nltk>=3.6
-matplotlib>=3.0.0
-seaborn>=0.11.0
-tqdm>=4.60.0
-```
-
-### Training Configuration
-
-| Parameter | Value | Rationale |
-|-----------|-------|-----------|
-| Optimizer | AdamW | Weight decay regularization |
-| Learning Rate | 2e-5 | Optimal for BERT fine-tuning |
-| Scheduler | OneCycleLR | Dynamic learning rate adjustment |
-| Epochs | 10 | Convergence balance |
-| Gradient Clipping | 1.0 | Stability enhancement |
-| Mixed Precision | FP16 | Memory efficiency + speed |
-| Dropout | 0.2 | Overfitting prevention |
 
 ---
 
@@ -132,62 +81,57 @@ tqdm>=4.60.0
 **Sources**: Combined Kaggle Emotion Datasets
 
 ### Abdallah Wagih Emotion Dataset
-- Volume: ~34,000 samples
-- Emotions: joy, sadness, anger, fear, love, surprise
-- Source: [Kaggle](https://www.kaggle.com/datasets/abdallahwagih/emotion-dataset)
+- **Samples**: ~6,000
+- **Emotions**: joy, anger, fear
+- **Source**: [Kaggle](https://www.kaggle.com/datasets/abdallahwagih/emotion-dataset)
 
 ### ISEAR Dataset
-- Volume: ~7,000 samples
-- Style: Narrative/literary emotional descriptions
-- Emotions: joy, fear, anger, sadness, disgust, shame, guilt
-- Source: [Kaggle](https://www.kaggle.com/datasets/faisalsanto007/isear-dataset)
+- **Samples**: ~7,000
+- **Style**: Narrative/literary emotional descriptions
+- **Emotions**: joy, fear, anger, sadness, disgust, shame, guilt
+- **Source**: [Kaggle](https://www.kaggle.com/datasets/faisalsanto007/isear-dataset)
 
-**Combined Statistics**
-- Total Samples: ~41,000+ samples
-- Training Set: 70%
-- Validation Set: 15%
-- Test Set: 15%
+### Combined Statistics
+| Split | Samples | Percentage |
+|-------|---------|------------|
+| Training | ~9,100 | 70% |
+| Validation | ~1,950 | 15% |
+| Test | ~1,950 | 15% |
+| **Total** | **13,028** | 100% |
 
-**Emotion Categories (per PDF specification)**
-- Joy, Sadness, Anger, Fear, Surprise, Neutral
-
-**Characteristics**
-- Real annotated emotion labels (not synthetic)
-- Diverse emotional content suitable for literary analysis
-- Proper sentiment derivation from emotion labels
+**Emotion Categories (per PDF specification)**:
+Joy, Sadness, Anger, Fear, Surprise, Neutral
 
 ---
 
-## Implementation Details
+## Technical Specifications
 
-### Model Architecture Implementation
+### Requirements
 
-The model implements a sophisticated feature fusion strategy:
+**Hardware**
+- GPU: NVIDIA GPU with minimum 16GB VRAM (T4, V100, A100)
+- RAM: 12GB+ recommended
+- Storage: 2GB for models and datasets
 
-1. BERT processes input tokens and produces contextualized embeddings (768-dimensional)
-2. CNN extracts local n-gram features through parallel convolutions
-3. BiLSTM captures sequential dependencies and temporal patterns
-4. Self-Attention weighs important sequence positions
-5. Features are concatenated (2816 dimensions) and passed to dual classifiers
+**Software**
+- Python 3.8+
+- PyTorch 2.0+
+- Transformers 4.0+
+- CUDA 11.0+
 
-### Training Pipeline
+### Training Configuration
 
-**Preprocessing**
-- Tokenization using BERT WordPiece tokenizer
-- Maximum sequence length: 512 tokens
-- Padding and truncation for uniform batch processing
-- Attention mask generation for padded sequences
-
-**Loss Function**
-- Multi-task weighted loss
-- Sentiment: Cross-Entropy Loss (60% weight)
-- Emotion: Binary Cross-Entropy with Logits Loss (40% weight)
-
-**Optimization Strategy**
-- Mixed precision training (FP16) via automatic mixed precision (AMP)
-- Gradient scaling for numerical stability
-- Gradient clipping to prevent exploding gradients
-- OneCycleLR scheduler for optimal convergence
+| Parameter | Value |
+|-----------|-------|
+| Optimizer | AdamW |
+| Learning Rate | 2e-5 |
+| Scheduler | OneCycleLR |
+| Epochs | 10 |
+| Batch Size | 32 |
+| Sequence Length | 256 |
+| Gradient Clipping | 1.0 |
+| Mixed Precision | FP16 |
+| Dropout | 0.2 |
 
 ---
 
@@ -195,209 +139,115 @@ The model implements a sophisticated feature fusion strategy:
 
 ```
 Machine-Learning-Based-Sentiment-Analysis-in-English-Literature/
-│
-├── IOMP.ipynb              # Main implementation notebook
-├── README.md                      # Project documentation
-├── assets/                        # Output visualizations
-│   ├── OUTPUT.jpeg                # Original training output
-│   ├── model_results.jpeg         # Final model performance metrics
-│   └── enhanced_training_history.png  # Training/validation curves
-└── .git/                          # Version control
+├── IOMP.ipynb                    # Main training notebook (Colab)
+├── inference.py                  # Local inference script
+├── enhanced_emotion_model.pth    # Trained model (~550MB)
+├── README.md                     # Project documentation
+├── perfectA16.pdf                # Project specification
+└── assets/
+    ├── model_results.png         # Final accuracy metrics
+    ├── sample_predictions.png    # Literary text predictions
+    ├── interactive_demo.png      # Interactive inference demo
+    └── training_history.png      # Training curves
 ```
 
 ---
 
 ## Usage Guide
 
-### Running the Notebook
+### Training (Google Colab)
 
-**Step 1: Environment Setup**
-```python
-# Verify GPU availability
-!nvidia-smi
+1. Open `IOMP.ipynb` in Google Colab
+2. Enable GPU runtime: Runtime → Change runtime type → GPU (T4)
+3. Run all cells
+4. Training takes ~1-2 hours on T4 GPU
+5. Download `enhanced_emotion_model.pth` after training
 
-# Install dependencies
-!pip install -q transformers datasets torch torchvision
-!pip install -q nltk scikit-learn matplotlib seaborn tqdm pyyaml
-```
-
-**Step 2: Model Training**
-```python
-# Initialize model
-model = EnhancedSentimentModel().to(device)
-
-# Train for 10 epochs
-# Expected time: 5-7 hours on high-performance GPU
-```
-
-**Step 3: Evaluation**
-```python
-# Load best model checkpoint
-model.load_state_dict(torch.load('best_enhanced_model.pth'))
-
-# Evaluate on test set
-# Generates classification report with precision, recall, F1-score
-```
-
-**Step 4: Inference**
-```python
-# Predict sentiment on new text
-text = "This movie was absolutely breathtaking!"
-sentiment, emotions = predict(text)
-```
-
-### Making Predictions
-
-The trained model can analyze any English text:
+### Inference (Local)
 
 ```python
-def predict(text):
-    """
-    Analyzes sentiment and emotions in input text
-    
-    Returns:
-    - Sentiment: Negative/Neutral/Positive with confidence
-    - Emotions: Top 3 emotions with scores
-    """
-    model.eval()
-    encoding = tokenizer(text, max_length=512, 
-                        padding='max_length',
-                        truncation=True, 
-                        return_tensors='pt')
-    
-    with torch.no_grad():
-        sent_logits, emo_logits, attention = model(
-            encoding['input_ids'].to(device),
-            encoding['attention_mask'].to(device)
-        )
-    
-    return process_predictions(sent_logits, emo_logits)
+python inference.py
 ```
 
-**Sample Predictions Output:**
+**Interactive mode:**
+```
+Enter text > The protagonist felt overwhelming joy
+    Sentiment:  Positive (99.9%)
+    Emotions:   Joy (1.00), Fear (0.00), Sadness (0.00)
+```
 
-The model demonstrates exceptional performance on diverse text samples, accurately identifying sentiments and associated emotions:
+### Python API
 
-![Sample Predictions](assets/OUTPUT.jpeg)
+```python
+from inference import predict
 
-The visualization above shows the model's predictions on three different movie reviews:
-- **Positive Review**: "This movie was absolutely breathtaking..." → Correctly identified as Positive (98.9%) with emotions Joy(0.99), Anger(0.01), Sadness(0.01)
-- **Negative Review**: "Complete waste of time..." → Correctly identified as Negative (98.8%) with emotions Sadness(0.98), Joy(0.02), Anger(0.52)
-- **Neutral Review**: "It was okay..." → Correctly identified as Negative (82.0%) with emotions Sadness(0.80), Anger(0.46), Joy(0.20)
+result = predict("This is a beautiful story about hope and redemption")
+print(f"Sentiment: {result['sentiment']} ({result['confidence']:.1%})")
+print(f"Emotions: {result['emotions']}")
+```
 
 ---
 
-## Results and Outputs
+## Sample Predictions
 
-All training results, performance metrics, and visualizations are saved in the **assets** folder.
+The model demonstrates exceptional performance on diverse literary text:
 
-### Available Outputs
-
-**Visualizations**
-- `assets/enhanced_training_history.png`: Training and validation loss/accuracy curves with baseline comparison
-- `assets/model_results.jpeg`: Final performance metrics showing 93.4% accuracy
-- `assets/OUTPUT.jpeg`: Original training output and results
-
-**Model Checkpoints**
-- `best_enhanced_model.pth`: Best validation performance checkpoint
-- `enhanced_sentiment_model.pth`: Final model with metadata (450MB)
-
-**Performance Reports**
-- Classification report with precision, recall, F1-score per class
-- Confusion matrix analysis
-- Sample predictions with confidence scores
+| Text | Sentiment | Confidence | Top Emotion |
+|------|-----------|------------|-------------|
+| "The protagonist felt overwhelming joy as she reunited with her family." | Positive | 99.9% | Joy (1.00) |
+| "A deep melancholy settled over him as he gazed upon the ruins." | Negative | 99.9% | Sadness (0.95) |
+| "Fury coursed through her veins when she discovered the betrayal." | Negative | 100.0% | Anger (1.00) |
+| "The dark corridor filled her with inexplicable dread." | Negative | 100.0% | Fear (0.99) |
+| "To her astonishment, the letter contained unexpected news." | Negative | 100.0% | Fear (0.99) |
+| "This is a dead end" | Negative | 100.0% | Fear (0.75) |
 
 ---
 
 ## Key Features
 
 **Advanced Architecture**
-- Hybrid deep learning combining transformer, CNN, and RNN approaches
+- Hybrid deep learning combining Transformer, CNN, and RNN
 - Multi-task learning for joint sentiment and emotion prediction
 - Self-attention for interpretable feature weighting
 
 **Optimization Techniques**
 - Mixed precision training (FP16) for memory efficiency
-- Gradient accumulation for larger effective batch sizes
-- OneCycleLR scheduler for optimal learning rate scheduling
-- Strategic layer freezing to reduce overfitting
+- OneCycleLR scheduler for optimal learning rate
+- Strategic layer freezing to prevent overfitting
+- Gradient clipping for training stability
 
 **Production Ready**
 - Comprehensive error handling
-- Progress tracking with tqdm
-- Automatic checkpoint saving
-- CPU-compatible model export for deployment
-
-**Scalability**
-- Configurable batch sizes and sequence lengths
-- Modular architecture for easy component swapping
-- Support for distributed training (future extension)
+- CPU-compatible model export
+- Interactive inference mode
+- ~100-200ms inference time on GPU
 
 ---
 
-## Future Enhancements
+## Training History
 
-**Potential Improvements**
-- Multi-lingual support through multilingual BERT variants
-- Domain adaptation for literary analysis, social media, news articles
-- Explainability features using attention visualization
-- Real-time inference API deployment
-- Model compression for edge device deployment
-
-**Research Directions**
-- Incorporating recent transformer architectures (RoBERTa, DeBERTa)
-- Few-shot learning for low-resource sentiment categories
-- Aspect-based sentiment analysis for fine-grained insights
-- Cross-domain transfer learning experiments
-
----
-
-## Technical Notes
-
-### Memory Optimization
-
-The implementation uses several techniques to manage GPU memory efficiently:
-
-- **Gradient Checkpointing**: Trading computation for memory
-- **Mixed Precision**: FP16 reduces memory footprint by 50%
-- **Batch Accumulation**: Simulates larger batches without memory overhead
-- **Selective Layer Freezing**: Only fine-tunes necessary BERT layers
-
-### Computational Complexity
-
-**Training**
-- Forward pass: O(n × d²) for BERT attention
-- CNN operations: O(n × k × f) for filters
-- LSTM operations: O(n × h²) for hidden states
-- Total: Approximately 5-7 hours on high-performance GPU for 10 epochs
-
-**Inference**
-- Single prediction: ~100-200ms on GPU
-- Batch prediction (32): ~1-2 seconds
-- CPU inference: ~3-4 seconds per sample
+![Training History](assets/training_history.png)
 
 ---
 
 ## Acknowledgments
 
 **Frameworks and Libraries**
-- **Hugging Face Transformers**: BERT implementation and pre-trained weights
-- **PyTorch**: Deep learning framework
-- **Scikit-learn**: Evaluation metrics and utilities
-- **NLTK**: Natural language processing tools
+- Hugging Face Transformers (BERT implementation)
+- PyTorch (Deep learning framework)
+- Scikit-learn (Evaluation metrics)
+- KaggleHub (Dataset access)
 
-**Dataset**
-- **IMDB Reviews**: Stanford University / Andrew Maas et al.
-
-**Compute Resources**
-- **GPU Cloud Platforms**: Compatible with Google Colab, Kaggle, AWS, Azure, and other cloud GPU services
+**Datasets**
+- Abdallah Wagih Emotion Dataset (Kaggle)
+- ISEAR Dataset (Kaggle)
 
 ---
 
-**Project Status**: COMPLETED
+**Project Status**: ✅ COMPLETED
 
-**Last Updated**: January 2025
+**Last Updated**: February 2026
 
-**Model Version**: Enhanced BERT-base v1.0
+**Model Version**: Enhanced BERT-base v2.0
 
-**Achieved Accuracy**: 93.4% (EXCEEDED TARGET)
+**Achieved Accuracy**: **97.5%** (F1: 0.9753)

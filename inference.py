@@ -178,7 +178,7 @@ class ModelRunner:
 if __name__ == "__main__":
     try:
         # Initialize the model once
-        runner = ModelRunner('enhanced_sentiment_model.pth')
+        runner = ModelRunner('enhanced_emotion_model.pth')
         
         print("\n" + "="*50)
         print(" INTERACTIVE SENTIMENT ANALYSIS ")
