@@ -129,19 +129,32 @@ tqdm>=4.60.0
 
 ## Dataset
 
-**Source**: IMDB Movie Reviews Dataset
+**Sources**: Combined Kaggle Emotion Datasets
 
-**Statistics**
-- Total Samples: 50,000 reviews
-- Training Set: 21,250 (85%)
-- Validation Set: 3,750 (15%)
-- Test Set: 25,000
+### Abdallah Wagih Emotion Dataset
+- Volume: ~34,000 samples
+- Emotions: joy, sadness, anger, fear, love, surprise
+- Source: [Kaggle](https://www.kaggle.com/datasets/abdallahwagih/emotion-dataset)
+
+### ISEAR Dataset
+- Volume: ~7,000 samples
+- Style: Narrative/literary emotional descriptions
+- Emotions: joy, fear, anger, sadness, disgust, shame, guilt
+- Source: [Kaggle](https://www.kaggle.com/datasets/faisalsanto007/isear-dataset)
+
+**Combined Statistics**
+- Total Samples: ~41,000+ samples
+- Training Set: 70%
+- Validation Set: 15%
+- Test Set: 15%
+
+**Emotion Categories (per PDF specification)**
+- Joy, Sadness, Anger, Fear, Surprise, Neutral
 
 **Characteristics**
-- Binary sentiment labels mapped to 3-class (Negative/Neutral/Positive)
-- Synthetic emotion labels derived from sentiment patterns
-- Long-form text reviews (variable length, up to 512 tokens)
-- Balanced class distribution
+- Real annotated emotion labels (not synthetic)
+- Diverse emotional content suitable for literary analysis
+- Proper sentiment derivation from emotion labels
 
 ---
 
