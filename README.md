@@ -143,7 +143,6 @@ Machine-Learning-Based-Sentiment-Analysis-in-English-Literature/
 ├── inference.py                  # Local inference script
 ├── enhanced_emotion_model.pth    # Trained model (~550MB)
 ├── README.md                     # Project documentation
-├── perfectA16.pdf                # Project specification
 └── assets/
     ├── model_results.png         # Final accuracy metrics
     ├── sample_predictions.png    # Literary text predictions
